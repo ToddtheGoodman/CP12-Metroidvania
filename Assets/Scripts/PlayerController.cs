@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //Create a variable to assign our Input to movement
-        float moveX = Input.GetAxis("Horizontal");
+        float moveX = Input.GetAxisRaw("Horizontal");
 
         //take our moveX and use it to apply force to our RB
         myRB.velocity = new Vector2(moveX * moveSpeed, myRB.velocity.y);
