@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     {
         //Grab the Rigidbody2D component on my Player game object
         myRB = GetComponent<Rigidbody2D>();
+        transform.position = new Vector3(0, 0, 0);
     }
 
     // Update is called once per frame
