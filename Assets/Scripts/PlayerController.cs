@@ -65,7 +65,16 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump") && canJump)
         {
             myRB.AddForce(new Vector2(0, jumpForce ),ForceMode2D.Impulse);            
-        }        
+        }
+        
+        if (Mathf.Abs(myRB.velocity.y) > 0.1f)
+        {
+            myAnim.SetBool("playerJump", true);
+        }
+        else
+        {
+            myAnim.SetBool("playerJump", false);
+        }
 
     }
 }
