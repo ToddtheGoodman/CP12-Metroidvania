@@ -9,12 +9,17 @@ public class PlayerController : MonoBehaviour
 
     public float moveSpeed;
     public float jumpForce;
+    private float regularJump;
+    private float boostJump;
 
     public Transform playerFeet;
 
-    public bool canJump;   
+    public bool canJump;
+    public bool jumpPowerup;
 
-    public LayerMask ground;      
+    public LayerMask ground;
+
+    
     
 
     // Start is called before the first frame update
@@ -26,7 +31,12 @@ public class PlayerController : MonoBehaviour
         //Grab the Animator component
         myAnim = GetComponent<Animator>();
 
-        transform.position = new Vector3(0, 0, 0);        
+        transform.position = new Vector3(0, 0, 0);
+
+        regularJump = 7;
+        boostJump = 10;
+        jumpForce = regularJump;
+
     }
 
     // Update is called once per frame
@@ -76,5 +86,25 @@ public class PlayerController : MonoBehaviour
             myAnim.SetBool("playerJump", false);
         }
 
+        jumpBoostStart();
+
     }
+
+   void jumpBoostStart()
+    {
+        if (jumpPowerup)
+        {
+            StartCoroutine(boostJumpCooldown());
+        }
+    }
+    
+
+    IEnumerator boostJumpCooldown()
+    {
+        jumpForce = boostJump;
+        jumpPowerup = false;
+        yield return new WaitForSeconds(5);        
+        jumpForce = regularJump;
+    }
+
 }

@@ -18,7 +18,7 @@ public class Powerup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        GameObject.Find("Player").GetComponent<PlayerController>().jumpForce += 2;
+        GameObject.Find("Player").GetComponent<PlayerController>().jumpPowerup = true;
         Destroy(gameObject);
     }
 }

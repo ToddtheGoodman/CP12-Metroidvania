@@ -11,6 +11,8 @@ public class LevelChange : MonoBehaviour
 
     public int levelNumber;
 
+    private Animator doorAnim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +20,8 @@ public class LevelChange : MonoBehaviour
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         DontDestroyOnLoad(player);
         DontDestroyOnLoad(mainCamera);
+
+        doorAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -27,9 +31,10 @@ public class LevelChange : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
-    {        
-        player.transform.position = new Vector3(0, 0, 0);
-        SceneManager.LoadScene(levelNumber);
+    {
+        doorAnim.SetBool("doorOpen", true);
+        //player.transform.position = new Vector3(0, 0, 0);
+        //SceneManager.LoadScene(levelNumber);
     }
 
 
