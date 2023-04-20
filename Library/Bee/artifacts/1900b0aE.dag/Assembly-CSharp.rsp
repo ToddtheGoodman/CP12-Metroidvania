@@ -368,6 +368,7 @@
 "Assets/Scripts/LevelChange.cs"
 "Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/Powerup.cs"
+"Assets/Scripts/ProjectileMove.cs"
 -langversion:9.0
 
 /deterministic

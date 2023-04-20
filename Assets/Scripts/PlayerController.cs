@@ -19,7 +19,8 @@ public class PlayerController : MonoBehaviour
 
     public LayerMask ground;
 
-    
+    public GameObject ammo;
+    public Transform ammoSpawner;
     
 
     // Start is called before the first frame update
@@ -88,6 +89,8 @@ public class PlayerController : MonoBehaviour
 
         jumpBoostStart();
 
+        shooting();
+        
     }
 
    void jumpBoostStart()
@@ -95,6 +98,14 @@ public class PlayerController : MonoBehaviour
         if (jumpPowerup)
         {
             StartCoroutine(boostJumpCooldown());
+        }
+    }     
+
+    void shooting()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Instantiate(ammo, ammoSpawner.transform.position, Quaternion.identity);
         }
     }
     

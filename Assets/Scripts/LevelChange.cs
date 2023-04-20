@@ -33,9 +33,14 @@ public class LevelChange : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         doorAnim.SetBool("doorOpen", true);
-        //player.transform.position = new Vector3(0, 0, 0);
-        //SceneManager.LoadScene(levelNumber);
+        StartCoroutine(levelDelay());
     }
 
+    IEnumerator levelDelay()
+    {
+        yield return new WaitForSeconds(1);
+        player.transform.position = new Vector3(0, 0, 0);
+        SceneManager.LoadScene(levelNumber);
+    }
 
 }
