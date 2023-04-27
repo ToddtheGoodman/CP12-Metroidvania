@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
 
     public GameObject ammo;
     public Transform ammoSpawner;
+
+    public int playerLives;
     
 
     // Start is called before the first frame update
@@ -37,6 +39,8 @@ public class PlayerController : MonoBehaviour
         regularJump = 7;
         boostJump = 10;
         jumpForce = regularJump;
+
+        playerLives = 3;
 
     }
 
@@ -85,6 +89,11 @@ public class PlayerController : MonoBehaviour
         else
         {
             myAnim.SetBool("playerJump", false);
+        }
+
+        if (playerLives < 1)
+        {
+            Destroy(gameObject);
         }
 
         jumpBoostStart();
